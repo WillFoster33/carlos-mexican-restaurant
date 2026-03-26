@@ -169,7 +169,8 @@ img {
 }
 
 .navbar.menu-open {
-    backdrop-filter: none;
+    backdrop-filter: none !important;
+    transition: none;
 }
 
 .nav-container {
@@ -920,8 +921,9 @@ img {
         display: flex;
     }
 
-    .nav-links.active a {
-        color: var(--white);
+    .nav-links.active a,
+    .navbar.scrolled .nav-links.active a {
+        color: var(--white) !important;
         font-size: 1.3rem;
     }
 
