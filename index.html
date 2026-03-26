@@ -262,6 +262,7 @@
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             navToggle.classList.toggle('active');
+            navbar.classList.toggle('menu-open');
         });
 
         // Close mobile menu on link click
@@ -269,6 +270,7 @@
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 navToggle.classList.remove('active');
+                navbar.classList.remove('menu-open');
             });
         });
 
