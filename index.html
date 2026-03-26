@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Mexican Restaurant | Authentic Mexican Food in Westland, MI</title>
+    <meta name="description" content="Family-owned authentic Mexican restaurant in Westland, Michigan. Fajitas, enchiladas, burritos, birria tacos & more. Dine-in, carry out & delivery. Mi Casa Es Su Casa.">
+    <link rel="icon" type="image/png" href="carloslogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="carloslogo.png" alt="Carlos Mexican Restaurant">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#hours">Hours</a></li>
+                <li class="mobile-only"><a href="#" class="order-trigger" style="color: var(--gold) !important;">Order Online</a></li>
+            </ul>
+            <button class="nav-cta" id="orderBtn" aria-label="Order Online">Order Online</button>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Order Online Modal -->
+    <div class="order-modal-overlay" id="orderModal">
+        <div class="order-modal">
+            <button class="order-modal-close" id="orderModalClose">&times;</button>
+            <h3>Order Online</h3>
+            <p>Choose your preferred delivery service</p>
+            <div class="order-options">
+                <a href="https://www.doordash.com/store/carlos-mexican-restaurant-westland-31438045/45072947/?srsltid=AfmBOoprQZ1CGnpImCywE-SLtYXzRSdsx65K721hXAoxtzl2ooPU5arY" target="_blank" class="order-option">
+                    <svg viewBox="0 0 200 200" width="32" height="32"><path fill="#FF3008" d="M195.7 69.3C175.3 28.6 130.9 0 100 0 44.8 0 0 44.8 0 100s44.8 100 100 100c30.9 0 75.3-28.6 95.7-69.3-5.5 4.8-12.7 7.7-20.5 7.7-17.1 0-31-13.9-31-31V92.6c0-17.1 13.9-31 31-31 7.8 0 15 2.9 20.5 7.7zM62.5 100c0 10.5-8.5 19-19 19s-19-8.5-19-19 8.5-19 19-19 19 8.5 19 19zm56 0c0 10.5-8.5 19-19 19s-19-8.5-19-19 8.5-19 19-19 19 8.5 19 19z"/></svg>
+                    <span>DoorDash</span>
+                </a>
+                <a href="https://www.ubereats.com/store/carlos-mexican-restaurant/4Zg2o0u0RTuNwbi4WszNiA/66211fd0-04a5-4841-9862-90cdd66149ef?srsltid=AfmBOoq2nN_bx95hc9d6abPH8BD2FUaLB3vBsPH1183KVScEcx9T07V2" target="_blank" class="order-option">
+                    <svg viewBox="0 0 64 64" width="32" height="32"><rect width="64" height="64" rx="12" fill="#06C167"/><path d="M32 8C18.7 8 8 18.7 8 32h16c0-4.4 3.6-8 8-8s8 3.6 8 8v24h16V32C56 18.7 45.3 8 32 8z" fill="#fff"/></svg>
+                    <span>Uber Eats</span>
+                </a>
+                <a href="https://postmates.com/store/carlos-mexican-restaurant/4Zg2o0u0RTuNwbi4WszNiA" target="_blank" class="order-option">
+                    <svg viewBox="0 0 64 64" width="32" height="32"><rect width="64" height="64" rx="12" fill="#000"/><path d="M32 12c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zm0 30c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z" fill="#fff"/><circle cx="32" cy="32" r="5" fill="#fff"/></svg>
+                    <span>Postmates</span>
+                </a>
+            </div>
+            <div class="order-divider"><span>or</span></div>
+            <a href="tel:7344212488" class="btn btn-primary" style="width:100%;">Call (734) 421-2488</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <!-- Sombreros that animate on scroll -->
+        <img src="sombrero-left.png" alt="" class="sombrero sombrero-left" id="sombreroLeft">
+        <img src="sombrero.png" alt="" class="sombrero sombrero-right" id="sombreroRight">
+        <div class="hero-content">
+            <img src="carloslogo.png" alt="Carlos Mexican Restaurant" class="hero-logo">
+            <p class="hero-tagline">
+                <span class="cactus-icon">&#127797;</span>
+                Mi Casa Es Su Casa
+                <span class="cactus-icon">&#127797;</span>
+            </p>
+            <h1>Authentic Mexican Food<br>in Westland, Michigan</h1>
+            <p class="hero-sub">Family-owned & serving homemade Mexican cuisine with fresh ingredients and bold flavors since day one.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary order-trigger">Order Online</button>
+                <a href="tel:7344212488" class="btn btn-outline">Call (734) 421-2488</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="about-slideshow">
+                        <img src="food1.jpg" alt="Authentic mole dish at Carlos Mexican Restaurant" class="about-slide active">
+                        <img src="food2.jpg" alt="Chile relleno at Carlos Mexican Restaurant" class="about-slide">
+                        <img src="food3.jpg" alt="Tacos at Carlos Mexican Restaurant" class="about-slide">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p class="section-label">
+                        <span class="cactus-icon small">&#127797;</span> Our Story
+                    </p>
+                    <h2>Bringing the Rich Flavors of Mexico to Westland</h2>
+                    <p>Carlos Mexican Restaurant is a family-owned gem serving Westland and the surrounding communities. Every dish is made with love, fresh ingredients, and authentic recipes passed down through generations.</p>
+                    <p>From sizzling fajitas to our famous birria tacos, we bring the bold, homemade flavors of Mexico right to your table — no shortcuts, no compromises. Whether you're dining in with family or grabbing carry out for the night, you're always welcome here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu CTA -->
+    <section class="menu" id="menu">
+        <div class="container" style="text-align: center;">
+            <p class="section-label center">
+                <span class="cactus-icon small">&#127797;</span> The Menu <span class="cactus-icon small">&#127797;</span>
+            </p>
+            <h2 class="section-title">Explore Our Full Menu</h2>
+            <p class="section-desc">From street tacos to sizzling fajitas — made fresh daily with authentic Mexican recipes.</p>
+            <a href="menu.html" class="btn btn-primary">View Menu</a>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <p class="section-label center">What People Say</p>
+            <h2 class="section-title">Loved by the Community</h2>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"This is by far one of the best I have been to in Michigan. Very fresh, very authentic."</p>
+                    <span class="review-source">— Google Review</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"I had two Birria tacos which were absolutely amazing 10/10! The best authentic Mexican food."</p>
+                    <span class="review-source">— Google Review</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Amazing fried flour shell tacos, reminds me of southern Cali Mexican food. We love this place!"</p>
+                    <span class="review-source">— Google Review</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"We love the food, love the service, love the prices, love the location. Great food and portions!"</p>
+                    <span class="review-source">— Google Review</span>
+                </div>
+            </div>
+
+            <div class="review-summary">
+                <div class="review-stat">
+                    <span class="stat-number">4.2&#9733;</span>
+                    <span class="stat-label">Google Rating</span>
+                </div>
+                <div class="review-stat">
+                    <span class="stat-number">266+</span>
+                    <span class="stat-label">Google Reviews</span>
+                </div>
+                <div class="review-stat">
+                    <span class="stat-number">4.5&#9733;</span>
+                    <span class="stat-label">TripAdvisor</span>
+                </div>
+                <div class="review-stat">
+                    <span class="stat-number">92%</span>
+                    <span class="stat-label">Recommend on Facebook</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours & Location -->
+    <section class="hours-location" id="hours">
+        <div class="container">
+            <div class="hl-grid">
+                <div class="hours-card">
+                    <p class="section-label">Hours</p>
+                    <h2>When We're Open</h2>
+                    <table class="hours-table">
+                        <tr><td>Monday</td><td>11:00 AM - 8:00 PM</td></tr>
+                        <tr><td>Tuesday</td><td>11:00 AM - 8:00 PM</td></tr>
+                        <tr><td>Wednesday</td><td>11:00 AM - 8:00 PM</td></tr>
+                        <tr><td>Thursday</td><td>11:00 AM - 8:00 PM</td></tr>
+                        <tr class="highlight-row"><td>Friday</td><td>11:00 AM - 9:00 PM</td></tr>
+                        <tr class="highlight-row"><td>Saturday</td><td>11:00 AM - 9:00 PM</td></tr>
+                        <tr><td>Sunday</td><td>12:00 PM - 7:00 PM</td></tr>
+                    </table>
+                </div>
+                <div class="map-card">
+                    <p class="section-label">Location</p>
+                    <h2>Find Us</h2>
+                    <p class="address">7988 N Wayne Rd<br>Westland, MI 48185</p>
+                    <div class="map-embed">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2951.5!2d-83.3901!3d42.3375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b4a0e1c1b1b1b%3A0x1234567890abcdef!2s7988+N+Wayne+Rd%2C+Westland%2C+MI+48185!5e0!3m2!1sen!2sus!4v1"
+                            width="100%" height="280" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" title="Carlos Mexican Restaurant location">
+                        </iframe>
+                    </div>
+                    <a href="https://www.google.com/maps/dir//7988+N+Wayne+Rd,+Westland,+MI+48185" target="_blank" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Ready to Eat? <span class="cactus-icon">&#127797;</span></h2>
+            <p>Order online for pickup or delivery — or call ahead for carry out.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary order-trigger">Order Online</button>
+                <a href="tel:7344212488" class="btn btn-outline-light">Call (734) 421-2488</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="carloslogo.png" alt="Carlos Mexican Restaurant" class="footer-logo">
+                    <p>Family-owned authentic Mexican restaurant bringing the rich flavors of Mexico to Westland & neighbors.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="menu.html">Full Menu</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#hours">Hours & Location</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>7988 N Wayne Rd<br>Westland, MI 48185</p>
+                    <p><a href="tel:7344212488">(734) 421-2488</a></p>
+                    <p><a href="mailto:carlosmexrestaurant@gmail.com">carlosmexrestaurant@gmail.com</a></p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/carlosmexrestaurant/" target="_blank" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/carlosmexrestaurant/" target="_blank" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@carlosmexrestaurant" target="_blank" aria-label="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.17V11.7a4.83 4.83 0 01-3.77-1.24V6.69h3.77z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Carlos Mexican Restaurant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = navbar.offsetHeight + 20;
+                    window.scrollTo({
+                        top: target.offsetTop - offset,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Order modal
+        const orderModal = document.getElementById('orderModal');
+        const orderModalClose = document.getElementById('orderModalClose');
+        document.querySelectorAll('.order-trigger, #orderBtn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                orderModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        function closeOrderModal() {
+            orderModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        orderModalClose.addEventListener('click', closeOrderModal);
+        orderModal.addEventListener('click', (e) => {
+            if (e.target === orderModal) closeOrderModal();
+        });
+
+        // Sombrero scroll animation
+        const sombreroLeft = document.getElementById('sombreroLeft');
+        const sombreroRight = document.getElementById('sombreroRight');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const moveAmount = Math.min(scrollY * 1.8, 600);
+            const rotate = Math.min(scrollY * 0.15, 45);
+            const opacity = Math.max(1 - scrollY / 400, 0);
+            sombreroLeft.style.transform = `translateX(-${moveAmount}px) rotate(-${rotate}deg)`;
+            sombreroLeft.style.opacity = opacity;
+            sombreroRight.style.transform = `translateX(${moveAmount}px) rotate(${rotate}deg)`;
+            sombreroRight.style.opacity = opacity;
+        });
+
+        // About slideshow
+        const aboutSlides = document.querySelectorAll('.about-slide');
+        let aboutIndex = 0;
+        setInterval(() => {
+            aboutSlides[aboutIndex].classList.remove('active');
+            aboutIndex = (aboutIndex + 1) % aboutSlides.length;
+            aboutSlides[aboutIndex].classList.add('active');
+        }, 4000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Carlos Mexican Restaurant - Westland, MI</title>
+    <meta name="description" content="Full menu for Carlos Mexican Restaurant in Westland, MI. Street tacos, birria, fajitas, burritos, enchiladas & more. Dine-in, carry out & delivery.">
+    <link rel="icon" type="image/png" href="carloslogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== MENU PAGE STYLES ===== */
+        .menu-page-hero {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--dark) 50%, var(--red-dark) 100%);
+            padding: 140px 24px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .menu-page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(0,104,71,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(193,39,45,0.2) 0%, transparent 50%);
+        }
+
+        .menu-page-hero .hero-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu-page-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .menu-page-hero p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+        }
+
+        .menu-nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-light);
+            position: sticky;
+            top: 68px;
+            z-index: 100;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .menu-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 8px;
+            min-width: max-content;
+        }
+
+        .menu-nav a {
+            padding: 16px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray);
+            white-space: nowrap;
+            transition: all var(--transition);
+            border-bottom: 3px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .menu-nav a:hover,
+        .menu-nav a.active {
+            color: var(--red);
+            border-bottom-color: var(--red);
+        }
+
+        .menu-section {
+            padding: 64px 0;
+        }
+
+        .menu-section:nth-child(even) {
+            background: var(--cream);
+        }
+
+        .menu-section:nth-child(odd) {
+            background: var(--white);
+        }
+
+        .menu-section-header {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .menu-section-header h2 {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .menu-section-header p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .menu-section-header .cactus-divider {
+            color: var(--green);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            letter-spacing: 8px;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px 48px;
+            margin-top: 40px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 14px 0;
+            border-bottom: 1px dashed var(--gray-light);
+        }
+
+        .menu-item-info {
+            flex: 1;
+            padding-right: 16px;
+        }
+
+        .menu-item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+
+        .menu-item-desc {
+            font-size: 0.82rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .menu-item-price {
+            font-weight: 700;
+            color: var(--red);
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .menu-item-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .menu-bottom-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--green-dark), var(--green));
+            text-align: center;
+        }
+
+        .menu-bottom-cta h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .menu-bottom-cta p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 28px;
+            font-size: 1.05rem;
+        }
+
+        .menu-bottom-cta .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .menu-items {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .menu-nav a {
+                padding: 14px 16px;
+                font-size: 0.78rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .menu-section {
+                padding: 48px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="carloslogo.png" alt="Carlos Mexican Restaurant">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="menu.html" style="color: var(--red)">Menu</a></li>
+                <li><a href="index.html#reviews">Reviews</a></li>
+                <li><a href="index.html#hours">Hours</a></li>
+            </ul>
+            <button class="nav-cta order-trigger" aria-label="Order Online">Order Online</button>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Order Online Modal -->
+    <div class="order-modal-overlay" id="orderModal">
+        <div class="order-modal">
+            <button class="order-modal-close" id="orderModalClose">&times;</button>
+            <h3>Order Online</h3>
+            <p>Choose your preferred delivery service</p>
+            <div class="order-options">
+                <a href="https://www.doordash.com/store/carlos-mexican-restaurant-westland-31438045/45072947/?srsltid=AfmBOoprQZ1CGnpImCywE-SLtYXzRSdsx65K721hXAoxtzl2ooPU5arY" target="_blank" class="order-option">
+                    <svg viewBox="0 0 200 200" width="32" height="32"><path fill="#FF3008" d="M195.7 69.3C175.3 28.6 130.9 0 100 0 44.8 0 0 44.8 0 100s44.8 100 100 100c30.9 0 75.3-28.6 95.7-69.3-5.5 4.8-12.7 7.7-20.5 7.7-17.1 0-31-13.9-31-31V92.6c0-17.1 13.9-31 31-31 7.8 0 15 2.9 20.5 7.7zM62.5 100c0 10.5-8.5 19-19 19s-19-8.5-19-19 8.5-19 19-19 19 8.5 19 19zm56 0c0 10.5-8.5 19-19 19s-19-8.5-19-19 8.5-19 19-19 19 8.5 19 19z"/></svg>
+                    <span>DoorDash</span>
+                </a>
+                <a href="https://www.ubereats.com/store/carlos-mexican-restaurant/4Zg2o0u0RTuNwbi4WszNiA/66211fd0-04a5-4841-9862-90cdd66149ef?srsltid=AfmBOoq2nN_bx95hc9d6abPH8BD2FUaLB3vBsPH1183KVScEcx9T07V2" target="_blank" class="order-option">
+                    <svg viewBox="0 0 64 64" width="32" height="32"><rect width="64" height="64" rx="12" fill="#06C167"/><path d="M32 8C18.7 8 8 18.7 8 32h16c0-4.4 3.6-8 8-8s8 3.6 8 8v24h16V32C56 18.7 45.3 8 32 8z" fill="#fff"/></svg>
+                    <span>Uber Eats</span>
+                </a>
+                <a href="https://postmates.com/store/carlos-mexican-restaurant/4Zg2o0u0RTuNwbi4WszNiA" target="_blank" class="order-option">
+                    <svg viewBox="0 0 64 64" width="32" height="32"><rect width="64" height="64" rx="12" fill="#000"/><path d="M32 12c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zm0 30c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z" fill="#fff"/><circle cx="32" cy="32" r="5" fill="#fff"/></svg>
+                    <span>Postmates</span>
+                </a>
+            </div>
+            <div class="order-divider"><span>or</span></div>
+            <a href="tel:7344212488" class="btn btn-primary" style="width:100%;">Call (734) 421-2488</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="menu-page-hero">
+        <div class="hero-inner">
+            <p style="color: var(--gold); font-size: 1.4rem; margin-bottom: 8px;">&#127797; &#127797; &#127797;</p>
+            <h1>Our Menu</h1>
+            <p>Authentic Mexican cuisine made fresh daily with bold flavors & love</p>
+        </div>
+    </section>
+
+    <!-- Menu Nav -->
+    <nav class="menu-nav">
+        <div class="menu-nav-inner">
+            <a href="#appetizers" class="active">Appetizers</a>
+            <a href="#street-tacos">Street Tacos</a>
+            <a href="#clasicos">Clasicos de la Casa</a>
+            <a href="#burritos">Specialty Burritos</a>
+            <a href="#favorites">Customer Favorites</a>
+            <a href="#combos">Combo Plates</a>
+            <a href="#fajitas">Skillet Fajitas</a>
+            <a href="#drinks">Drinks</a>
+            <a href="#desserts">Desserts</a>
+        </div>
+    </nav>
+
+    <!-- APPETIZERS -->
+    <section class="menu-section" id="appetizers">
+        <div class="container">
+            <div class="menu-section-header">
+                <div class="cactus-divider">&#127797; &#127797; &#127797;</div>
+                <h2>Appetizers</h2>
+                <p>Start your meal off right</p>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Guacamole</div>
+                        <div class="menu-item-desc">Fresh-made guacamole with chips</div>
+                    </div>
+                    <div class="menu-item-price">$6 / $8</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chorizo Queso</div>
+                        <div class="menu-item-desc">Melted cheese dip with seasoned chorizo</div>
+                    </div>
+                    <div class="menu-item-price">$8.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chicken Tortilla Soup</div>
+                        <div class="menu-item-desc">Hearty chicken soup with crispy tortilla strips</div>
+                    </div>
+                    <div class="menu-item-price">$6.00</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chips & Salsa</div>
+                        <div class="menu-item-desc">Complimentary with any purchase</div>
+                    </div>
+                    <div class="menu-item-price">FREE</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Mini Birria Nachos</div>
+                        <div class="menu-item-desc">Loaded nachos topped with slow-cooked birria</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STREET TACOS -->
+    <section class="menu-section" id="street-tacos">
+        <div class="container">
+            <div class="menu-section-header">
+                <div class="cactus-divider">&#127797; &#127797; &#127797;</div>
+                <h2>Street Tacos</h2>
+                <p>Served on corn tortillas with cilantro, onion & salsa</p>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Pastor</div>
+                        <div class="menu-item-desc">Marinated pork</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Carne Asada</div>
+                        <div class="menu-item-desc">Grilled steak</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Pollo Asado</div>
+                        <div class="menu-item-desc">Grilled chicken</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Carnitas</div>
+                        <div class="menu-item-desc">Slow-cooked pork</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chorizo</div>
+                        <div class="menu-item-desc">Mexican sausage</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Birria</div>
+                        <div class="menu-item-desc">Slow-cooked beef</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Lengua</div>
+                        <div class="menu-item-desc">Beef tongue</div>
+                    </div>
+                    <div class="menu-item-price">$5.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Tripa</div>
+                        <div class="menu-item-desc">Beef tripe</div>
+                    </div>
+                    <div class="menu-item-price">$5.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Barbacoa</div>
+                        <div class="menu-item-desc">Slow-cooked shredded beef</div>
+                    </div>
+                    <div class="menu-item-price">$5.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Al Pastor</div>
+                        <div class="menu-item-desc">Marinated pork with pineapple</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLASICOS DE LA CASA -->
+    <section class="menu-section" id="clasicos">
+        <div class="container">
+            <div class="menu-section-header">
+                <div class="cactus-divider">&#127797; &#127797; &#127797;</div>
+                <h2>Clasicos de la Casa</h2>
+                <p>House classics served with rice, beans & tortillas</p>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chicken Milanesa</div>
+                        <div class="menu-item-desc">Breaded chicken cutlet with pico de gallo, rice & beans</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chile Relleno</div>
+                        <div class="menu-item-desc">Stuffed poblano pepper with cheese, topped with ranchero sauce</div>
+                    </div>
+                    <div class="menu-item-price">$13.15</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Mole Con Pollo</div>
+                        <div class="menu-item-desc">Chicken smothered in rich, traditional mole sauce</div>
+                    </div>
+                    <div class="menu-item-price">$14.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Steak Tampiqueno</div>
+                        <div class="menu-item-desc">Grilled steak served tampiqueno-style</div>
+                    </div>
+                    <div class="menu-item-price">$15.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Arroz Con Pollo</div>
+                        <div class="menu-item-desc">Chicken with seasoned Mexican rice</div>
+                    </div>
+                    <div class="menu-item-price">$13.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Birria Plate</div>
+                        <div class="menu-item-desc">Slow-cooked beef birria with consomme, rice & beans</div>
+                    </div>
+                    <div class="menu-item-price">$18.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Brisket Ranchero Steak</div>
+                        <div class="menu-item-desc">Grilled brisket with ranchero sauce</div>
+                    </div>
+                    <div class="menu-item-price">$16.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Caldo de Res / de Pollo</div>
+                        <div class="menu-item-desc">Traditional beef or chicken soup with vegetables</div>
+                    </div>
+                    <div class="menu-item-price">$14.16</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Carne Asada</div>
+                        <div class="menu-item-desc">Grilled steak with rice, beans & tortillas</div>
+                    </div>
+                    <div class="menu-item-price">$16.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Carnitas</div>
+                        <div class="menu-item-desc">Slow-cooked pork with rice, beans & tortillas</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Camarones al Chile</div>
+                        <div class="menu-item-desc">Shrimp sauteed in chile sauce</div>
+                    </div>
+                    <div class="menu-item-price">$16.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Steak a la Mexicana</div>
+                        <div class="menu-item-desc">Steak with peppers, onions, tomatoes & Mexican spices</div>
+                    </div>
+                    <div class="menu-item-price">$16.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Pollo a la Crema</div>
+                        <div class="menu-item-desc">Chicken in a creamy chipotle sauce</div>
+                    </div>
+                    <div class="menu-item-price">$14.75</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIALTY BURRITOS -->
+    <section class="menu-section" id="burritos">
+        <div class="container">
+            <div class="menu-section-header">
+                <div class="cactus-divider">&#127797; &#127797; &#127797;</div>
+                <h2>Specialty Burritos</h2>
+                <p>Oversized burritos packed with flavor</p>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">King Burrito</div>
+                        <div class="menu-item-desc">Loaded with your choice of meat, rice, beans & cheese</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Catalina's Burrito</div>
+                        <div class="menu-item-desc">House specialty burrito</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Mula Burrito</div>
+                        <div class="menu-item-desc">Oversized burrito stuffed with meat, rice, beans & toppings</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chorizo Supreme</div>
+                        <div class="menu-item-desc">Chorizo burrito with all the fixings</div>
+                    </div>
+                    <div class="menu-item-price">$13.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Poblano Burrito</div>
+                        <div class="menu-item-desc">Burrito with roasted poblano peppers</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Wet Burrito Supreme</div>
+                        <div class="menu-item-desc">Smothered in enchilada sauce & melted cheese</div>
+                    </div>
+                    <div class="menu-item-price">$14.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">California Burrito</div>
+                        <div class="menu-item-desc">Cali-style with fries, meat, cheese & sour cream</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER FAVORITES -->
+    <section class="menu-section" id="favorites">
+        <div class="container">
+            <div class="menu-section-header">
+                <div class="cactus-divider">&#127797; &#127797; &#127797;</div>
+                <h2>Customer Favorites</h2>
+                <p>The dishes our community keeps coming back for</p>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Tacos de Birria <span class="menu-item-badge">Popular</span></div>
+                        <div class="menu-item-desc">Crispy birria tacos served with consomme for dipping</div>
+                    </div>
+                    <div class="menu-item-price">$13.98</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Birria Ramen</div>
+                        <div class="menu-item-desc">Ramen noodles in rich birria broth with toppings</div>
+                    </div>
+                    <div class="menu-item-price">$14.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Birria Ranch</div>
+                        <div class="menu-item-desc">Birria-style ranch plate</div>
+                    </div>
+                    <div class="menu-item-price">$13.98</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Crispy Chimichanga</div>
+                        <div class="menu-item-desc">Deep-fried burrito, golden & crispy</div>
+                    </div>
+                    <div class="menu-item-price">$14.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">8" Quesadilla</div>
+                        <div class="menu-item-desc">Large flour tortilla with melted cheese & your choice of meat</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Crunchy Flautas</div>
+                        <div class="menu-item-desc">Crispy rolled tacos with cream, cheese & salsa</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Taco Salad Bowl</div>
+                        <div class="menu-item-desc">Crispy tortilla bowl filled with meat, lettuce, cheese & toppings</div>
+                    </div>
+                    <div class="menu-item-price">$13.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Deep Fried Tacos</div>
+                        <div class="menu-item-desc">Golden fried tacos with your choice of filling</div>
+                    </div>
+                    <div class="menu-item-price">$13.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">10" Mexican Pizza</div>
+                        <div class="menu-item-desc">Crispy tortilla pizza with meat, beans, cheese & toppings</div>
+                    </div>
+                    <div class="menu-item-price">$13.98</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Nacho Supreme</div>
+                        <div class="menu-item-desc">Loaded nachos with meat, cheese, beans & all the toppings</div>
+                    </div>
+                    <div class="menu-item-price">$12.99 / $14.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Mexican Sandwich</div>
+                        <div class="menu-item-desc">Traditional torta-style sandwich</div>
+                    </div>
+                    <div class="menu-item-price">$12.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Tamales</div>
+                        <div class="menu-item-desc">Handmade tamales with traditional fillings</div>
+                    </div>
+                    <div class="menu-item-price">$12.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Huarache</div>
+                        <div class="menu-item-desc">Thick oval corn masa topped with meat, beans & toppings</div>
+                    </div>
+                    <div class="menu-item-price">$13.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Botana</div>
+                        <div class="menu-item-desc">Shareable platter with assorted meats & toppings</div>
+                    </div>
+                    <div class="menu-item-price">$11.99 / $19.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Traditional Enchiladas</div>
+                        <div class="menu-item-desc">Classic enchiladas with your choice of sauce & filling</div>
+                    </div>
+                    <div class="menu-item-price">$13.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Enchiladas Suizas</div>
+                        <div class="menu-item-desc">Enchiladas topped with creamy tomatillo sauce</div>
+                    </div>
+                    <div class="menu-item-price">$14.25</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Sopes</div>
+                        <div class="menu-item-desc">Thick corn masa boats with beans, meat & toppings</div>
+                    </div>
+                    <div class="menu-item-price">$12.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Classic Tacos</div>
+                        <div class="menu-item-desc">Hard or soft shell tacos with your choice of meat</div>
+                    </div>
+                    <div class="menu-item-price">$12.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Street Torta</div>
+                        <div class="menu-item-desc">Mexican street-style sandwich on fresh bread</div>
+                    </div>
+                    <div class="menu-item-price">$12.75 / $14.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMBO PLATES -->
+    <section class="menu-section" id="combos">
+        <div class="container">
+            <div class="menu-section-header">
+                <div class="cactus-divider">&#127797; &#127797; &#127797;</div>
+                <h2>Combo Plates</h2>
+                <p>Choose 3 items: chimichanga, hard taco, or enchilada &mdash; served with rice & beans</p>
+            </div>
+            <div class="menu-items" style="max-width: 500px; margin: 40px auto 0;">
+                <div class="menu-item" style="grid-column: 1 / -1;">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Combo Plate</div>
+                        <div class="menu-item-desc">Pick any 3: chimichanga, hard taco, enchilada. Served with rice, beans & tortillas</div>
+                    </div>
+                    <div class="menu-item-price">$14.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLET FAJITAS -->
+    <section class="menu-section" id="fajitas">
+        <div class="container">
+            <div class="menu-section-header">
+                <div class="cactus-divider">&#127797; &#127797; &#127797;</div>
+                <h2>Skillet Fajitas</h2>
+                <p>Sizzling on a hot skillet with peppers, onions, rice, beans & warm tortillas</p>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chicken Fajitas</div>
+                        <div class="menu-item-desc">Grilled chicken with sauteed peppers & onions</div>
+                    </div>
+                    <div class="menu-item-price">$16.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Steak Fajitas</div>
+                        <div class="menu-item-desc">Grilled steak with sauteed peppers & onions</div>
+                    </div>
+                    <div class="menu-item-price">$17.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Combo Fajitas (2 Meats)</div>
+                        <div class="menu-item-desc">Mix of steak & chicken on a sizzling skillet</div>
+                    </div>
+                    <div class="menu-item-price">$19.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Shrimp Fajitas</div>
+                        <div class="menu-item-desc">Jumbo shrimp with sauteed peppers & onions</div>
+                    </div>
+                    <div class="menu-item-price">$19.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRINKS -->
+    <section class="menu-section" id="drinks">
+        <div class="container">
+            <div class="menu-section-header">
+                <div class="cactus-divider">&#127797; &#127797; &#127797;</div>
+                <h2>Drinks</h2>
+                <p>Refreshing Mexican beverages</p>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Jarritos</div>
+                        <div class="menu-item-desc">Authentic Mexican soda in assorted flavors</div>
+                    </div>
+                    <div class="menu-item-price">$3.95</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Cafe de Olla</div>
+                        <div class="menu-item-desc">Traditional Mexican coffee with cinnamon & piloncillo</div>
+                    </div>
+                    <div class="menu-item-price">$3.75</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Aguas Frescas</div>
+                        <div class="menu-item-desc">Fresh fruit water - ask for today's flavors</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Horchata</div>
+                        <div class="menu-item-desc">Creamy rice drink with cinnamon & vanilla</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Jamaica</div>
+                        <div class="menu-item-desc">Hibiscus flower tea, served cold</div>
+                    </div>
+                    <div class="menu-item-price">$4.50</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESSERTS -->
+    <section class="menu-section" id="desserts">
+        <div class="container">
+            <div class="menu-section-header">
+                <div class="cactus-divider">&#127797; &#127797; &#127797;</div>
+                <h2>Desserts</h2>
+                <p>The perfect sweet finish</p>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Churros</div>
+                        <div class="menu-item-desc">Crispy cinnamon-sugar churros</div>
+                    </div>
+                    <div class="menu-item-price">$6.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Flan</div>
+                        <div class="menu-item-desc">Creamy caramel custard</div>
+                    </div>
+                    <div class="menu-item-price">$6.99</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Tres Leches</div>
+                        <div class="menu-item-desc">Three-milk sponge cake</div>
+                    </div>
+                    <div class="menu-item-price">$7.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="menu-bottom-cta">
+        <div class="container">
+            <h2>Ready to Order? &#127797;</h2>
+            <p>Dine in, carry out, or get it delivered to your door.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary order-trigger">Order Delivery</button>
+                <a href="tel:7344212488" class="btn btn-outline-light">Call (734) 421-2488</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="carloslogo.png" alt="Carlos Mexican Restaurant" class="footer-logo">
+                    <p>Family-owned authentic Mexican restaurant bringing the rich flavors of Mexico to Westland & neighbors.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="menu.html">Full Menu</a></li>
+                        <li><a href="index.html#reviews">Reviews</a></li>
+                        <li><a href="index.html#hours">Hours & Location</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>7988 N Wayne Rd<br>Westland, MI 48185</p>
+                    <p><a href="tel:7344212488">(734) 421-2488</a></p>
+                    <p><a href="mailto:carlosmexrestaurant@gmail.com">carlosmexrestaurant@gmail.com</a></p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/carlosmexrestaurant/" target="_blank" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/carlosmexrestaurant/" target="_blank" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@carlosmexrestaurant" target="_blank" aria-label="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.17V11.7a4.83 4.83 0 01-3.77-1.24V6.69h3.77z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Carlos Mexican Restaurant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+
+        // Mobile menu
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Order modal
+        const orderModal = document.getElementById('orderModal');
+        const orderModalClose = document.getElementById('orderModalClose');
+        document.querySelectorAll('.order-trigger').forEach(btn => {
+            btn.addEventListener('click', () => {
+                orderModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        function closeOrderModal() {
+            orderModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        orderModalClose.addEventListener('click', closeOrderModal);
+        orderModal.addEventListener('click', (e) => {
+            if (e.target === orderModal) closeOrderModal();
+        });
+
+        // Menu nav active state on scroll
+        const menuSections = document.querySelectorAll('.menu-section');
+        const menuNavLinks = document.querySelectorAll('.menu-nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            menuSections.forEach(section => {
+                const top = section.offsetTop - 160;
+                if (window.scrollY >= top) {
+                    current = section.getAttribute('id');
+                }
+            });
+            menuNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for menu nav
+        document.querySelectorAll('.menu-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 140,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
