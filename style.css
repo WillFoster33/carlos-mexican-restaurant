@@ -938,8 +938,9 @@ img {
         z-index: 1001;
     }
 
-    .nav-toggle.active span {
-        background: var(--white);
+    .nav-toggle.active span,
+    .navbar.scrolled .nav-toggle.active span {
+        background: var(--white) !important;
     }
 
     .nav-toggle.active span:nth-child(1) {
